@@ -1,13 +1,69 @@
+/* Selector de Id*/
+
 #tituloprincipal{
     text-align: center; 
     color:white;
     background: green;
 }
 
-.parrafoVerde{
-    color: green;
-}
-
+/*Selector de clases*/
 .parrafoRojo{
     color: red;
+}
+
+
+.parrafoVerde{
+    color: purple;
+}
+
+.ejemploPadding {
+    /* 4 lados a los 4 lados*/
+    padding: 10px;
+    /*Arriba/abajo - izquerda/derecha */
+    padding: 10px 20px;
+    
+    /*Arriba - izquerda/derecha - Abajo*/
+    padding: 10px 20px 30px;
+
+    /*Arriba - izquerda - abajo - derecha*/
+    padding: 10px 20px 30px 40px;
+    
+    margin-bottom: 40px;
+    
+    
+}
+
+/*Selector de elemento*/
+
+/*p, h1, div {
+    background-color: antiquewhite;
+}*/
+
+/* selector descendente*/
+
+div.contenedor p.parrafoVerde{
+    font-size: 50px;
+}
+
+
+/*anclas */
+a {
+    font-size: 20px;
+    
+}
+/* evento hover= mouse encima*/
+a:hover {
+    
+    color:red;
+    transition: 1s;
+}
+
+a:visited {
+    color: green;
+    
+}
+/*cuando se mantine el click sobre el enlace*/
+a:active{
+    color:white;
+    background: black;
 }
