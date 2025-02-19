@@ -18,6 +18,7 @@ public class CategoriaServiceImpl implements CategoriaService{
         
         if (activos){
             lista.removeIf(c -> !c.isActivo());
+
             
         }
         return lista;
