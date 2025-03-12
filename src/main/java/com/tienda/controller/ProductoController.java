@@ -2,6 +2,7 @@
 
 package com.tienda.controller;
 
+import com.tienda.domain.Categoria;
 import com.tienda.domain.Producto;
 import com.tienda.service.CategoriaService;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.tienda.service.ProductoService;
 import com.tienda.service.impl.FirebaseStorageServiceImpl;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,10 +32,14 @@ public class ProductoController {
     
     @RequestMapping("/listado")
     public String page(Model model) {
-        var productos = productoService.getProductos(false);
+        //var productos = productoService.getProductos(false);
+        
+        List<Producto> productos = productoService.getProductos(false);
+        List<Categoria> listaCategoriasActivas = categoriaService.getCategorias(true);
+        
         model.addAttribute("productos", productos);
         model.addAttribute("totalProductos", productos.size());
-     
+        model.addAttribute("categorias", listaCategoriasActivas);
         return "/producto/listado";
     }
     
