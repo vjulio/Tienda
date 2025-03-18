@@ -72,7 +72,47 @@
             </div>
         </section>
 
-
+ <!-- 2 Sección principal para mostrar la informaccion de las productos -->
+        <section th:fragment="listadoCategorias" id="categorias">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>[[#{categoria.listado}]]</h4></div>
+                            <div th:if="${categorias != null and !categorias.empty}">
+                                <table class="table table-striped table-hover">
+                                    <thead class="table-dark">
+                                        <tr><th>#</th>
+                                            <th>[[#{categoria.descripcion}]]</th>
+                                            <th>[[#{categoria.activo}]]</th>
+                                            </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="categoria, contador : ${categorias}">
+                                            <td>[[${contador.count}]]</td>
+                                            <td>[[${categoria.descripcion}]]</td>
+                                            <td th:text="${categoria.activo} ? 'Activa' : 'Inactiva'" />
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="text-center p-2" th:if="${categorias == null or categorias.empty}">
+                                <span>[[#{lista.vacia}]]</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-center bg-success text-white mb-3">
+                            <div class="card-body">
+                                <h3>[[#{categoria.total}]]</h3>
+                                <h4 class="fs-2"><i class="fas fa-users"></i> [[${totalCategorias}]]</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- 3 Sección para crear los filtros -->
         <section th:fragment="filtros" class="bg-light">
@@ -160,6 +200,41 @@
             </div>
 
 
-        </section>         
+        </section>  
+        
+        
+        
+ <!-- 3 Sección para crear los filtros 2 -->
+        <section th:fragment="filtros2" class="bg-light">
+            <div class="row py-2">
+                <div class="col-md-1"></div>
+                <div class="col-md-3">
+                    <form method="POST" th:action="@{/pruebas/query0}" 
+                          class="was-validated">
+                        <div class="card">                            
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="descripcionInf">[[#{categoria.descripcion}]]</label>
+                                    <input type="text" class="form-control" 
+                                           th:value="${descripcionInf}"
+                                           th:name="descripcionInf" required="true"/>
+                                </div>
+
+                            </div>
+                            <div class="card-footer text-center">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-check"></i> [[#{pruebas.ampliadas}]]
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>  
+ 
+
+                  
+            </div>
+
+
+        </section>          
     </body>
 </html>

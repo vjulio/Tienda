@@ -81,4 +81,26 @@ public class PruebasController {
         model.addAttribute("precioSup", precioSup);
         return "/pruebas/listado2";
     }   
+    
+    
+        //Los métodos siguientes son para la prueba de consultas ampliadas
+    @GetMapping("/listado3")
+    public String listado3(Model model) {
+        //var productos = productoService.getProductos(false);
+        var categorias = categoriaService.getCategorias(false);
+        
+        model.addAttribute("categorias", categorias);
+         model.addAttribute("totalCategorias", categorias.size());
+        return "/pruebas/listado3";
+    }
+    
+        @PostMapping("/query0")
+    public String consultaQuery0(@RequestParam(value = "descripcionInf") String descripcionInf, Model model) {
+        var categorias = categoriaService.buscarPorPalabra(descripcionInf);
+        
+        model.addAttribute("categorias", categorias);
+         model.addAttribute("totalCategorias", categorias.size());
+        model.addAttribute("descripcionInf", descripcionInf);
+        return "/pruebas/listado3";
+    }   
 }
