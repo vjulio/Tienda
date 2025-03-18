@@ -35,6 +35,11 @@ public class ProductoController {
         //var productos = productoService.getProductos(false);
         
         List<Producto> productos = productoService.getProductos(false);
+        
+        //List<Producto> productos = productoService.buscarPorExistencias(5);
+        
+        //List<Producto> productos = productoService.buscarPorExistenciasYPrecio(5,25000);
+                
         List<Categoria> listaCategoriasActivas = categoriaService.getCategorias(true);
         
         model.addAttribute("productos", productos);
@@ -72,5 +77,8 @@ public class ProductoController {
         model.addAttribute("categorias", listaCategoriasActivas);
         return "/producto/modifica";
     }    
+
+  
+    
 
 }
